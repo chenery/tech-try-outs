@@ -17,3 +17,23 @@ Note: Can try out using Bootstrap as per [https://github.com/shomeya/bootstrap-s
 	$ npm install
 
 	$ node app
+
+Add a module to make http client requests [https://github.com/danwrong/restler].
+
+    $ npm install util
+    $ npm install restler
+
+    var sys = require('util'),
+        rest = require('restler');
+
+A node debugger [https://github.com/dannycoates/node-inspector].
+
+    $ npm install -g node-inspector
+
+To enable debug mode for the program:
+
+    $ node --debug app.js
+
+Start the inspector in the background.
+
+    $ node-inspector &
