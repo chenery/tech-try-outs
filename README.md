@@ -49,3 +49,43 @@ Add in ORM support so we can persist https://github.com/dresende/node-orm/.
 Add in a date lib to format dates to insertion into the database http://momentjs.com/.
 
     $ npm install moment
+
+Add a DOM implementation so we can search for comments using https://github.com/tmpvar/jsdom
+
+    $ npm install jsdom
+
+I had issues getting the dependency contextify installed https://github.com/tmpvar/jsdom/issues/436.  Ended up running the following based on https://github.com/mxcl/homebrew/issues/13337:
+
+    $ sudo xcode-select -switch /usr/bin
+
+Add a scheduler to make our job periodic, https://github.com/ncb000gt/node-cron
+
+    $ npm install cron
+
+
+
+
+Notes & Reading
+===============
+
+JS closures:
+
+http://stackoverflow.com/questions/111102/how-do-javascript-closures-work
+
+Application structure:
+
+http://stackoverflow.com/questions/5778245/expressjs-how-to-structure-an-application
+
+http://stackoverflow.com/questions/10103338/how-to-exports-models-with-node-orm
+
+Node style guide:
+
+http://nodeguide.com/style.html
+
+Thoughts on scraping:
+
+http://phantomjs.org/
+
+Using backbone on the server:
+
+http://andyet.net/blog/2011/feb/15/re-using-backbonejs-models-on-the-server-with-node/

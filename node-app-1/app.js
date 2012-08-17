@@ -4,9 +4,13 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , http = require('http')
-  , path = require('path');
+    , routes = require('./routes')
+    , http = require('http')
+    , path = require('path')
+    , models = require('./models/models.js');
+
+// initialise the db connection and orm
+models.getDbConnectionAndInitModels();
 
 var app = express();
 
