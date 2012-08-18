@@ -45,7 +45,7 @@ Add in mysql client support [https://github.com/felixge/node-mysql](https://gith
 ORM support
 ===========
 
-I tried node-orm to persist date https://github.com/dresende/node-orm/.  But found it to be limited for mysql.
+I tried node-orm to persist data https://github.com/dresende/node-orm/.  But found it to be limited for mysql.
 
 Install http://sequelizejs.com/
 
@@ -63,8 +63,12 @@ I had issues getting the dependency contextify installed https://github.com/tmpv
 
     $ sudo xcode-select -switch /usr/bin
 
+Scheduler
+=========
+
 Add a scheduler to make our job periodic, https://github.com/ncb000gt/node-cron
 
+    $ npm install time
     $ npm install cron
 
 

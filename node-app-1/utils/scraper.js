@@ -37,7 +37,7 @@ exports.persistStoryComments = function(storyId, pubDate, title, url) {
 
                         // todo do something with the comments
 
-                        models.saveNews(storyId, pubDate, title, url);
+
 
                     } else {
                         console.log("Error finding numeric comments value, skipping");

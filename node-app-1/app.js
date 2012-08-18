@@ -7,10 +7,24 @@ var express = require('express')
     , routes = require('./routes')
     , http = require('http')
     , path = require('path')
-    , models = require('./models/models.js');
+    , models = require('./models/models.js')
+    , importer = require('./utils/importer.js');
 
 // initialise the db connection and orm
 models.getDbConnectionAndInitModels();
+
+// kick off news importer job for every 1 min,
+var cronJob = require('cron').CronJob;
+new cronJob('0 * * * * *', function(){
+
+    importer.importNews();
+
+}, null, true, "Europe/London");
+
+// todo kick off the comments scraper for existing news stories every 1 min
+
+// todo kick off the score totaliser job every 1 min
+
 
 var app = express();
 

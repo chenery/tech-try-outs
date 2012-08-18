@@ -40,6 +40,8 @@ exports.getDbConnectionAndInitModels = function() {
 
 exports.saveNews = function(storyId, pubDate, title, url) {
 
+    // todo check the db connection is initialised already
+
     // todo check to see if this story exists already
 
     Models.News.create({ storyId: storyId, pubDate: pubDate, title: title, url: url})
