@@ -1,51 +1,51 @@
-// todo work out how to structure and modularise the app
+// module for persistance
 
-var orm = require("orm");
+var Sequelize = require("sequelize");
 
 // Holder object for all our models
 var Models = {};
 
 exports.getDbConnectionAndInitModels = function() {
-    return orm.connect("mysql://root:spit69fire@localhost/node_news", function (success, db) {
-        if (!success) {
-            console.log("Could not connect to database!");
-            return;
-        }
-
-        // you can now use db variable to define models
-
-        Models.News = db.define("news", {
-            "storyId"   : { "type": "string" },
-            "pubDate"   : { "type": "date" },
-            "title"     : { "type": "string"},
-            "url"       : { "type": "string"}
-        });
-
-        // create the tables if they don't exist
-        Models.News.sync();
-
-        console.log("Connected to db and models initialised.");
+    var sequelize = new Sequelize('node_news', 'root', 'spit69fire', {
+        host: "localhost",
+        port: 3306
     });
+
+    // define our entities
+
+    Models.News = sequelize.define('news', {
+        storyId:    Sequelize.STRING,
+        pubDate:    Sequelize.DATE,
+        title:      Sequelize.STRING,
+        url:        Sequelize.STRING
+    });
+
+    var CommentRecord = sequelize.define('comment_record', {
+        date:           Sequelize.DATE,
+        numComments:    Sequelize.INTEGER
+    });
+
+    // define our associations
+
+    /**
+     * This will add the attribute NewsId or news_id to CommentRecord.
+     * Instances of News will get the accessors getCommentRecords and setCommentRecords.
+     */
+
+    Models.News.hasMany(CommentRecord, {as: "CommentRecords"});
+
+    // create all tables... now!
+    sequelize.sync();
 };
 
 exports.saveNews = function(storyId, pubDate, title, url) {
 
     // todo check to see if this story exists already
 
-    var story = new Models.News({
-        "storyId" : storyId,
-        "pubDate" : pubDate,
-        "title"   : title,
-        "url" : url
-    });
-
-    story.save(function (err, itemCopy) {
-        if (!err) {
-            console.log("Saved! ID=" + itemCopy.id);
-        } else {
-            console.log("Something went wrong...");
-            console.dir(err);
-        }
-    });
+    Models.News.create({ storyId: storyId, pubDate: pubDate, title: title, url: url})
+        .success(function(news) {
+            // you can now access the newly created task via the variable news
+            console.log("news created")
+        });
 };
 

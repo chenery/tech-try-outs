@@ -42,9 +42,14 @@ Add in mysql client support [https://github.com/felixge/node-mysql](https://gith
 
     $ npm install mysql
 
-Add in ORM support so we can persist https://github.com/dresende/node-orm/.
+ORM support
+===========
 
-    $ npm install orm
+I tried node-orm to persist date https://github.com/dresende/node-orm/.  But found it to be limited for mysql.
+
+Install http://sequelizejs.com/
+
+    $ npm install sequelize
 
 Add in a date lib to format dates to insertion into the database http://momentjs.com/.
 
