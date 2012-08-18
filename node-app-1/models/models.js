@@ -2,6 +2,9 @@
 
 var orm = require("orm");
 
+// Holder object for all our models
+var Models = {};
+
 exports.getDbConnectionAndInitModels = function() {
     return orm.connect("mysql://root:spit69fire@localhost/node_news", function (success, db) {
         if (!success) {
@@ -11,7 +14,7 @@ exports.getDbConnectionAndInitModels = function() {
 
         // you can now use db variable to define models
 
-        var News = db.define("news", {
+        Models.News = db.define("news", {
             "storyId"   : { "type": "string" },
             "pubDate"   : { "type": "date" },
             "title"     : { "type": "string"},
@@ -19,15 +22,17 @@ exports.getDbConnectionAndInitModels = function() {
         });
 
         // create the tables if they don't exist
-        News.sync();
+        Models.News.sync();
 
         console.log("Connected to db and models initialised.");
     });
 };
 
 exports.saveNews = function(storyId, pubDate, title, url) {
-    // wack in the data
-    var story = new orm.News({
+
+    // todo check to see if this story exists already
+
+    var story = new Models.News({
         "storyId" : storyId,
         "pubDate" : pubDate,
         "title"   : title,

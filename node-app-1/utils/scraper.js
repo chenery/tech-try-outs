@@ -2,21 +2,30 @@
 var jsdom = require("jsdom");
 var models = require('../models/models.js');
 
+/**
+ * todo remove the persist from this function
+ *
+ * @param storyId
+ * @param pubDate
+ * @param title
+ * @param url
+ *
+ */
 exports.persistStoryComments = function(storyId, pubDate, title, url) {
 
-    return jsdom.env(url, [
+    jsdom.env(url, [
         'http://code.jquery.com/jquery-1.5.min.js'
     ],
         function(errors, window) {
 
             // check for a comments form
-            // todo work out why this jquery reference is now broken
-            var commentsForm = $("#sort-comments");
+            var commentsForm = window.$("#sort-comments");
 
             if (commentsForm !== "undefined") {
                 // scrape the current comments value
                 try {
-                    var numCommentsStr = commentsForm.children(":first").html().substring(0, commentsForm.indexOf(" "));
+                    var firstElementHtml = commentsForm.children(":first").html();
+                    var numCommentsStr = firstElementHtml.substring(0, firstElementHtml.indexOf(" "));
 
                     // todo number check, add to utils package
 
@@ -25,6 +34,8 @@ exports.persistStoryComments = function(storyId, pubDate, title, url) {
                     if (!isNaN(numComments) && isFinite(numComments)) {
 
                         console.log("Found number of comments: " + numComments);
+
+                        // todo do something with the comments
 
                         models.saveNews(storyId, pubDate, title, url);
 

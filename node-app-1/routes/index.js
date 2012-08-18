@@ -30,7 +30,7 @@ exports.index = function(req, res){
 
             if (typeof results !== "undefined") {
                 // iterate the results and store then in the database
-                for(var i = 0; i < 1 ; i++) {
+                for(var i = 0; i < results.length ; i++) {
                     var result = results[i];
                     console.log("Story: " + result.id + " " + result.webPublicationDate + " " + result.webTitle
                         + " " + result.webUrl);
