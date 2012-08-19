@@ -6,12 +6,10 @@ var models = require('../models/models.js');
  * todo remove the persist from this function
  *
  * @param storyId
- * @param pubDate
- * @param title
  * @param url
  *
  */
-exports.persistStoryComments = function(storyId, pubDate, title, url) {
+exports.persistStoryComments = function(storyId, url) {
 
     jsdom.env(url, [
         'http://code.jquery.com/jquery-1.5.min.js'
@@ -35,9 +33,7 @@ exports.persistStoryComments = function(storyId, pubDate, title, url) {
 
                         console.log("Found number of comments: " + numComments);
 
-                        // todo do something with the comments
-
-
+                        models.saveCommentRecord(storyId, numComments);
 
                     } else {
                         console.log("Error finding numeric comments value, skipping");

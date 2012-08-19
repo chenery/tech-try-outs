@@ -21,10 +21,12 @@ new cronJob('0 * * * * *', function(){
 
 }, null, true, "Europe/London");
 
-// todo kick off the comments scraper for existing news stories every 1 min
+// kick off comments scraper job for every 1 min, at a 30 sec offset
+new cronJob('30 * * * * *', function(){
 
-// todo kick off the score totaliser job every 1 min
+    models.getNewsAndScrape();
 
+}, null, true, "Europe/London");
 
 var app = express();
 
