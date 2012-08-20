@@ -9,24 +9,25 @@ var express = require('express')
     , routes = require('./routes')
     , http = require('http')
     , path = require('path')
-    , models = require('./models/models.js')
-    , importer = require('./utils/importer.js');
+    , models = require('./repository/models.js')
+    , importer = require('./jobs/news-importer.js')
+    , scraper = require('./jobs/comments-scraper.js');
 
 // initialise the db connection and orm
 models.getDbConnectionAndInitModels();
 
-// kick off news importer job for every 1 min,
+// kick off news importer job for every 15 min,
 var cronJob = require('cron').CronJob;
-new cronJob('0 * * * * *', function(){
+new cronJob('0 0/15 * * * *', function(){
 
     importer.importNews();
 
 }, null, true, "Europe/London");
 
-// kick off comments scraper job for every 1 min, at a 30 sec offset
-new cronJob('30 * * * * *', function(){
+// kick off comments scraper job for every 10 min, at a 30 sec offset
+new cronJob('30 0/10 * * * *', function(){
 
-    models.getNewsAndScrape();
+    scraper.scrapeComments();
 
 }, null, true, "Europe/London");
 

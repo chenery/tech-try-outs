@@ -1,11 +1,30 @@
 tech-try-outs
 =============
 
-Try out some Javascript based stuff
+Try out some Javascript based stuff, in particular server side in order to compare to Java.
 
-/node-app-1
+news_velocity
+=============
 
-Try out an express app.  To install globally:
+A simple server side driven web app that delivers the most talked about articles on news sites.
+
+Todo:
+=====
+- Frontend to visual data
+- Test framework
+- Dependency management and packaging
+- Extend to scrape twitter/social media
+- Integrate backbone.js
+
+Tech used
+=========
+
+Web app framework: Express
+==========================
+
+http://expressjs.com/
+
+To install globally:
 
 	$ npm install express -g
 
@@ -18,6 +37,9 @@ Note: Can try out using Bootstrap as per [https://github.com/shomeya/bootstrap-s
 
 	$ node app
 
+Http client: Restler
+====================
+
 Add a module to make http client requests [https://github.com/danwrong/restler](https://github.com/danwrong/restler).
 
     $ npm install util
@@ -25,6 +47,9 @@ Add a module to make http client requests [https://github.com/danwrong/restler](
 
     var sys = require('util'),
         rest = require('restler');
+
+Debugger: node-inspector
+========================
 
 A node debugger [https://github.com/dannycoates/node-inspector](https://github.com/dannycoates/node-inspector).
 
@@ -38,12 +63,15 @@ Start the inspector in the background.
 
     $ node-inspector &
 
+Database: mysql
+===============
+
 Add in mysql client support [https://github.com/felixge/node-mysql](https://github.com/felixge/node-mysql)
 
     $ npm install mysql
 
-ORM support
-===========
+ORM support: Sequelize
+======================
 
 I tried node-orm to persist data https://github.com/dresende/node-orm/.  But found it to be limited for mysql.
 
@@ -51,9 +79,15 @@ Install http://sequelizejs.com/
 
     $ npm install sequelize
 
+Date Utils: Moment
+==================
+
 Add in a date lib to format dates to insertion into the database http://momentjs.com/.
 
     $ npm install moment
+
+Dom manipulation for scraping: jsdom
+====================================
 
 Add a DOM implementation so we can search for comments using https://github.com/tmpvar/jsdom
 
@@ -63,16 +97,16 @@ I had issues getting the dependency contextify installed https://github.com/tmpv
 
     $ sudo xcode-select -switch /usr/bin
 
-Scheduler
-=========
+Scheduler: node-cron
+====================
 
 Add a scheduler to make our job periodic, https://github.com/ncb000gt/node-cron
 
     $ npm install time
     $ npm install cron
 
-Jade Templating
-===============
+Templating: Jade
+================
 
 https://github.com/visionmedia/jade
 

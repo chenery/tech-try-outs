@@ -3,7 +3,7 @@
  * GET home page.
  */
 
-var models = require('../models/models.js');
+var dao = require('../repository/dao.js');
 
 exports.index = function(req, res){
 
@@ -13,7 +13,7 @@ exports.index = function(req, res){
         link2: "http://www.guardian.co.uk/zeitgeist"
     };
 
-    models.getNews(function (news) {
+    dao.getNews(function (news) {
         res.render('index', { title: 'Guardian Zeitgeist', news: news, content: content });
     });
 };

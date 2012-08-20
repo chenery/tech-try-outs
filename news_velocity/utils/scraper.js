@@ -1,15 +1,13 @@
 // dom manipulation
 var jsdom = require("jsdom");
-var models = require('../models/models.js');
+var dao = require('../repository/dao.js');
 
 /**
- * todo remove the persist from this function
- *
- * @param storyId
+ * Hit this url and scrape the number of comments for the article
  * @param url
  *
  */
-exports.persistStoryComments = function(storyId, url) {
+exports.getNumberOfComments = function(url, callback) {
 
     jsdom.env(url, [
         'http://code.jquery.com/jquery-1.5.min.js'
@@ -35,7 +33,7 @@ exports.persistStoryComments = function(storyId, url) {
 
                         console.log("Found number of comments: " + numComments);
 
-                        models.saveCommentRecord(storyId, numComments);
+                        return callback(numComments);
 
                     } else {
                         console.log("Error finding numeric comments value, skipping");
