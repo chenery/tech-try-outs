@@ -16,12 +16,14 @@ exports.persistStoryComments = function(storyId, url) {
     ],
         function(errors, window) {
 
-            // check for a comments form
-            var commentsForm = window.$("#sort-comments");
+            try {
 
-            if (commentsForm !== "undefined") {
-                // scrape the current comments value
-                try {
+                // check for a comments form
+                var commentsForm = window.$("#sort-comments");
+
+                if (commentsForm !== "undefined") {
+                    // scrape the current comments value
+
                     var firstElementHtml = commentsForm.children(":first").html();
                     var numCommentsStr = firstElementHtml.substring(0, firstElementHtml.indexOf(" "));
 
@@ -38,11 +40,11 @@ exports.persistStoryComments = function(storyId, url) {
                     } else {
                         console.log("Error finding numeric comments value, skipping");
                     }
-                } catch (err) {
-                    console.log("Error scraping story comments value, skipping: " + err.message);
+                } else {
+                    console.log("Unable to find comments form, skipping");
                 }
-            } else {
-                console.log("Unable to find comments form, skipping");
+            } catch (err) {
+                console.log("Error scraping story comments value, skipping: " + err.message);
             }
         }
     );

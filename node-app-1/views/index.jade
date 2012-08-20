@@ -2,4 +2,17 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p #{content.intro}
+  p The Guardian's current effort:
+
+  a(href='#{content.link2}') Guardian Zeitgeist
+  a(href='#{content.link1}') Blog entry describing Guardian Zeitgeist
+
+  p Some data scraped of the Comment is free guardian pages for comparison:
+
+  ul
+
+  -for (var id in news)
+    - var n = news[id]
+        li
+            a(href='#{n.url}') #{n.title} - #{n.score} comments per hour - #{n.totalComments} comments at #{n.updatedAt}

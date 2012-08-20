@@ -61,6 +61,15 @@ exports.saveNews = function(storyId, pubDate, title, url) {
     });
 };
 
+exports.getNews = function(callback) {
+    Models.News.findAll(
+        {order: "score DESC"}
+    ).success(function(newses) {
+        // newses will be an array of all News instances, pass back using callback func
+        return callback(newses);
+    });
+};
+
 exports.getNewsAndScrape = function() {
     // find multiple entries
     Models.News.findAll().success(function(newses) {
@@ -69,7 +78,7 @@ exports.getNewsAndScrape = function() {
             var news = newses[i];
             scraper.persistStoryComments(news.storyId, news.url);
         }
-    })
+    });
 };
 
 exports.saveCommentRecord = function(storyId, numComments) {

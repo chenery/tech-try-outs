@@ -71,7 +71,10 @@ Add a scheduler to make our job periodic, https://github.com/ncb000gt/node-cron
     $ npm install time
     $ npm install cron
 
+Jade Templating
+===============
 
+https://github.com/visionmedia/jade
 
 
 Notes & Reading
@@ -98,3 +101,5 @@ http://phantomjs.org/
 Using backbone on the server:
 
 http://andyet.net/blog/2011/feb/15/re-using-backbonejs-models-on-the-server-with-node/
+
+http://stackoverflow.com/questions/4296505/understanding-promises-in-node-js

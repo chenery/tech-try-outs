@@ -1,6 +1,8 @@
 
 /**
  * Module dependencies.
+ *
+ * todo check the app does not block the event loop
  */
 
 var express = require('express')
