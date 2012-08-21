@@ -1,5 +1,4 @@
-tech-try-outs
-=============
+# tech-try-outs
 
 Try out some Javascript based stuff, in particular server side in order to compare to Java.
 
@@ -8,16 +7,16 @@ news_velocity
 
 A simple server side driven web app that delivers the most talked about articles on news sites.
 
-Todo:
-=====
-- Frontend to visual data
+Implemented for Guardian comment articles.  Article scoring is based on comments per hour.
+
+## Todo:
+- Frontend to visualise data
 - Test framework
 - Dependency management and packaging
 - Extend to scrape twitter/social media
 - Integrate backbone.js
 
-Tech used
-=========
+# Tech used
 
 Web app framework: Express
 ==========================
