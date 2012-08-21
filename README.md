@@ -2,24 +2,32 @@
 
 Try out some Javascript based stuff, in particular server side in order to compare to Java.
 
-news_velocity
-=============
+# Summary
+
+- Node.js is super quick to develop in with a broad range of tools and modules available to use.  Just think of what you need, google it and it's available via the node package manager.
+- Need to get your head around writing asynchronous code using callback functions (I.e. how to return database results etc).
+- Need to be careful not to block the node event loop and hang your server (http://blog.mixu.net/2011/02/01/understanding-the-node-js-event-loop/)
+- Not sure how the lack of abstraction (e.g. in Java typically everything is written using an interface if possible) will hinder things for larger projects.
+
+# news_velocity
+
 
 A simple server side driven web app that delivers the most talked about articles on news sites.
 
 Implemented for Guardian comment articles.  Article scoring is based on comments per hour.
 
 ## Todo:
+- stop scraper.getNumberOfComments blocking event loop
 - Frontend to visualise data
 - Test framework
+- Scrape social media stats from pages using jsdom to execute js
 - Dependency management and packaging
 - Extend to scrape twitter/social media
 - Integrate backbone.js
 
-# Tech used
+## Tech used
 
-Web app framework: Express
-==========================
+### Web app framework: express
 
 http://expressjs.com/
 
@@ -36,8 +44,7 @@ Note: Can try out using Bootstrap as per [https://github.com/shomeya/bootstrap-s
 
 	$ node app
 
-Http client: Restler
-====================
+### Http client: restler
 
 Add a module to make http client requests [https://github.com/danwrong/restler](https://github.com/danwrong/restler).
 
@@ -47,8 +54,7 @@ Add a module to make http client requests [https://github.com/danwrong/restler](
     var sys = require('util'),
         rest = require('restler');
 
-Debugger: node-inspector
-========================
+### Debugger: node-inspector
 
 A node debugger [https://github.com/dannycoates/node-inspector](https://github.com/dannycoates/node-inspector).
 
@@ -62,15 +68,13 @@ Start the inspector in the background.
 
     $ node-inspector &
 
-Database: mysql
-===============
+### Database: mysql
 
 Add in mysql client support [https://github.com/felixge/node-mysql](https://github.com/felixge/node-mysql)
 
     $ npm install mysql
 
-ORM support: Sequelize
-======================
+### ORM support: sequelize
 
 I tried node-orm to persist data https://github.com/dresende/node-orm/.  But found it to be limited for mysql.
 
@@ -78,15 +82,13 @@ Install http://sequelizejs.com/
 
     $ npm install sequelize
 
-Date Utils: Moment
-==================
+### Date Utils: Moment
 
 Add in a date lib to format dates to insertion into the database http://momentjs.com/.
 
     $ npm install moment
 
-Dom manipulation for scraping: jsdom
-====================================
+### Dom manipulation for scraping: jsdom
 
 Add a DOM implementation so we can search for comments using https://github.com/tmpvar/jsdom
 
@@ -96,22 +98,19 @@ I had issues getting the dependency contextify installed https://github.com/tmpv
 
     $ sudo xcode-select -switch /usr/bin
 
-Scheduler: node-cron
-====================
+### Scheduler: node-cron
 
 Add a scheduler to make our job periodic, https://github.com/ncb000gt/node-cron
 
     $ npm install time
     $ npm install cron
 
-Templating: Jade
-================
+### Templating: Jade
 
 https://github.com/visionmedia/jade
 
 
-Notes & Reading
-===============
+## Notes & Reading
 
 JS closures:
 
@@ -130,6 +129,8 @@ http://nodeguide.com/style.html
 Thoughts on scraping:
 
 http://phantomjs.org/
+
+http://www.deanmao.com/2012/08/07/enhanced-web-scraping-in-nodejs/
 
 Using backbone on the server:
 

@@ -45,7 +45,7 @@ exports.saveCommentRecord = function(storyId, numComments) {
                 .success(function(commentRecord) {
                     // you can now access the newly created task via the variable news
                     news.addCommentRecord(commentRecord).success(function() {
-                        console.log("added comment record association");
+                        // console.log("added comment record association");
                         console.log("CommentRecord created");
                     });
                 });
@@ -62,7 +62,7 @@ exports.saveCommentRecord = function(storyId, numComments) {
             news.score = score;
             news.totalComments = numComments;
             news.save().success(function () {
-                console.log("Added score to story")
+                // console.log("Added score to story")
             })
 
         } else {

@@ -13,12 +13,16 @@ exports.scrapeComments = function() {
         for(var i = 0; i < newses.length ; i++) {
             var news = newses[i];
 
-            // get the number of comments for this story
-            scraper.getNumberOfComments(news.url, function(numComments) {
-
-                // record this number of comments for this time and calcualate the news score
-                dao.saveCommentRecord(news.storyId, numComments);
-            });
+            getCommentsAndSave(news.storyId, news.url);
         }
+    });
+};
+
+var getCommentsAndSave = function(storyId, url) {
+    // get the number of comments for this story
+    scraper.getNumberOfComments(url, function(numComments) {
+
+        // record this number of comments for this time and calculate the news score
+        dao.saveCommentRecord(storyId, numComments);
     });
 };
