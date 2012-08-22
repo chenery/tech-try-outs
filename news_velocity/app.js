@@ -14,16 +14,16 @@ var express = require('express')
 // initialise the db connection and orm
 models.getDbConnectionAndInitModels();
 
-// kick off news importer job for every 15 min,
+// kick off news importer job for every 1 min,
 var cronJob = require('cron').CronJob;
-new cronJob('0 0/15 * * * *', function(){
+new cronJob('0 * * * * *', function(){
 
     importer.importNews();
 
 }, null, true, "Europe/London");
 
-// kick off comments scraper job for every 10 min, at a 30 sec offset
-new cronJob('30 0/10 * * * *', function(){
+// kick off comments scraper job for every 5 min, at a 30 sec offset
+new cronJob('30 0/5 * * * *', function(){
 
     scraper.scrapeComments();
 

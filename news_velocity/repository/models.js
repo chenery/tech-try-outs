@@ -45,4 +45,6 @@ exports.getDbConnectionAndInitModels = function() {
 
     // create all tables... now!
     db.sync();
+
+    console.log("db connected and models initialised.")
 };

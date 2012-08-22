@@ -19,7 +19,7 @@ exports.saveNews = function(storyId, pubDate, title, url) {
             models.Models.News.create({ storyId: storyId, pubDate: pubDate, title: title, url: url})
                 .success(function(news) {
                     // you can now access the newly created task via the variable news
-                    console.log("news created");
+                    console.log("news created: " + title);
                 });
         }
     });
@@ -43,10 +43,10 @@ exports.saveCommentRecord = function(storyId, numComments) {
             // keep a record of the comments over time
             models.Models.CommentRecord.create({ date: new Date(), numComments: numComments})
                 .success(function(commentRecord) {
-                    // you can now access the newly created task via the variable news
+                    // you can now access the newly created news via the variable news
                     news.addCommentRecord(commentRecord).success(function() {
                         // console.log("added comment record association");
-                        console.log("CommentRecord created");
+                        console.log("CommentRecord created for storyId: " + storyId);
                     });
                 });
 
@@ -55,14 +55,11 @@ exports.saveCommentRecord = function(storyId, numComments) {
             // publish date, i.e. comments per hour.
             var pubDateMoment = moment(news.pubDate);
             var age = moment().diff(pubDateMoment, 'hours', true);    // true for floating point calc
-            var score = numComments / age;
 
-            console.log("Score for story " + news.storyId + " is " + score);
-
-            news.score = score;
+            news.score = numComments / age;
             news.totalComments = numComments;
             news.save().success(function () {
-                // console.log("Added score to story")
+                console.log("News score update for: " + news.storyId + " score: " + news.score);
             })
 
         } else {

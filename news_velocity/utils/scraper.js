@@ -19,10 +19,12 @@ exports.getNumberOfComments = function(url, callback) {
                 // check for a comments form
                 var commentsForm = window.$("#sort-comments");
 
+                // todo better null check on commentsForm
                 if (commentsForm !== "undefined") {
                     // scrape the current comments value
 
                     var firstElementHtml = commentsForm.children(":first").html();
+                    // todo better null check on firstElementHtml
                     var numCommentsStr = firstElementHtml.substring(0, firstElementHtml.indexOf(" "));
 
                     // todo number check, add to utils package
@@ -31,7 +33,7 @@ exports.getNumberOfComments = function(url, callback) {
 
                     if (!isNaN(numComments) && isFinite(numComments)) {
 
-                        console.log("Found number of comments: " + numComments);
+//                        console.log("Found number of comments: " + numComments);
 
                         return callback(numComments);
 

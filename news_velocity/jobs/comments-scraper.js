@@ -7,6 +7,8 @@ var dao = require('../repository/dao.js');
 
 exports.scrapeComments = function() {
 
+    console.log("Starting scraper job");
+
     // get all the news for which to record comments scores
     dao.getNews(function(newses) {
         // newses will be an array of all News instances

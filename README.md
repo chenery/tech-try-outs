@@ -11,10 +11,16 @@ Try out some Javascript based stuff, in particular server side in order to compa
 
 # news_velocity
 
-
 A simple server side driven web app that delivers the most talked about articles on news sites.
 
 Implemented for Guardian comment articles.  Article scoring is based on comments per hour.
+
+## Getting starting
+
+Install node and npm, clone the git repos then:
+
+    $ npm install   // pull in all the dependencies specified in package.json
+    $ node app.js   // kick off the application
 
 ## Todo:
 - stop scraper.getNumberOfComments blocking event loop

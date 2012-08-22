@@ -20,6 +20,7 @@
         "moment":       "1.7.x",
         "mysql":        "0.9.x",
         "restler":      "2.0.x",
-        "sequelize":    "1.5.x"
+        "sequelize":    "1.5.x",
+        "time":         "0.8.x"
   }
 }
