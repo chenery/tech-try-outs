@@ -109,6 +109,10 @@ Add a scheduler to make our job periodic, https://github.com/ncb000gt/node-cron
 
 https://github.com/visionmedia/jade
 
+### Packaging
+
+http://blog.nodejitsu.com/package-dependencies-done-right
+
 
 ## Notes & Reading
 

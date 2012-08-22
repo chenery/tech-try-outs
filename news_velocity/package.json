@@ -1,13 +1,25 @@
 {
-  "name": "application-name",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "node app"
-  },
-  "dependencies": {
-    "express": "3.0.0rc1",
-    "jade": "*",
-    "stylus": "*"
+    "name": "news_velocity",
+    "version": "0.0.1",
+    "description": "A simple server side driven web app that delivers the most talked about articles on news sites.",
+    "author": {
+        "name": "Paul Chenery",
+        "email": "paulchenery@gmail.com"
+    },
+    "private": true,
+    "scripts": {
+        "start": "node app"
+    },
+    "dependencies": {
+        "express":      "3.0.0rc1",
+        "jade":         "*",
+        "stylus":       "*",
+        "contextify":   "0.1.x",
+        "cron":         "1.0.x",
+        "jsdom":        "0.2.x",
+        "moment":       "1.7.x",
+        "mysql":        "0.9.x",
+        "restler":      "2.0.x",
+        "sequelize":    "1.5.x"
   }
 }
